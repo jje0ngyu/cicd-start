@@ -15,10 +15,10 @@ services:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=false  # 초기 설정 마법사 비활성화 옵션
     
   server:
-    image: dangtong76/cloud-cicd
+    image: jje0ngyu/cloud-cicd
     container_name: "ide"
-    networks:
-      - kind_network
+    # networks:
+    #   - kind_network
     environment:
       FILE__PASSWORD: /run/secrets/code-server-password
     env_file:
@@ -33,10 +33,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - cloud-cicd-src:/code/cloud-cicd-src
       - vscode:/config
-networks:
-  kind_network:
-    name: kind
-    external: true
+# networks:
+#   kind_network:
+#     name: kind
+#     external: true
 
 volumes:
   cloud-cicd-src:
